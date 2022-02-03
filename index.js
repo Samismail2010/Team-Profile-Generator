@@ -1,11 +1,9 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const generateHTML = require('./src/page-template');
+const generatePage = require('./src/page-template');
 
-const employeeArray = []
-
-const addTeamMember =() => {
-    return inquirer.prompt ([
+const promptUser = () => {
+    return inquirer.prompt([
 {
     type: 'input',
     name: 'manager',
@@ -57,12 +55,27 @@ const addTeamMember =() => {
         return false;
         }
     }
-},
+}
+]);
+};
+const promptQues = employeeData => {
+    console.log(`
+  =================
+  Add New Employee?
+  =================
+  `);
+
+if (!employeeData.projects) {
+    employeeData.projects = [];
+  }
+  return inquirer
+    .prompt([
 {
-    type: 'list',
-    name: 'option',
-    message: 'Would you like to add an engineer or intern for your project?',
-    choices: ['Add an engineer', 'Add an intern', 'Team is complete']
+    type: 'confirm',
+    name: 'confirmAddProject',
+    message: 'Would you like to add an engineer for your project?',
+    default: true
+
 },
 {
     type: 'input',
@@ -113,6 +126,35 @@ const addTeamMember =() => {
        }return false;
    } 
  },
+])
+// .then(projectData => {
+//     employeeData.projects.push(projectData);
+//     if (projectData.confirmAddProject) {
+//       return promptQues(employeeData);
+//     } else {
+//       return employeeData;
+//     }
+//   });
+
+};
+const promptProject = employeeData => {
+    console.log(`
+  =================
+  Need More Hands?
+  =================
+  `);
+
+if (!employeeData.projects) {
+    employeeData.projects = [];
+  }
+  return inquirer
+    .prompt([
+{
+    type: 'confirm',
+    name: 'confirmAddProject',
+    message: 'Would you like to add a intern for your project?',
+    default: true
+},
  {
      type: 'input',
      name: 'internname',
@@ -161,38 +203,28 @@ const addTeamMember =() => {
         }return false;
     }
  },
- {
-     type: 'confirm',
-     name: 'confirmAbout',
-     message: 'Would you like to add another employee?',
-     default: false
- }
+
 ])
-.then(teamData => {
-    if (teamData.confirmAbout){
-        return addTeamMember(employeeArray);
-    }else {
-        return employeeArray;
-    }
-})
-}
-const writeToFile = pageHTML => {
-    fs.writeFile('./dist/index.html', pageHTML, err => {
-        if (err) {
-            console.log(err);
-            return
-        } else { 
-            console.log('Your HTML file has been created!') 
-        }
-    })
-}
-const init = () => {
-    addTeamMember()
-    .then(employeeArray => {
-        return generateHTML(employeeArray);
-    })
-    .then(pageHTML => {
-        return writeToFile(pageHTML);
+// .then(projectData => {
+//     employeeData.projects.push(projectData);
+//     if (projectData.confirmAddProject) {
+//       return promptProject(employeeData);
+//     } else {
+//       return employeeData;
+//     }
+
+//   });
+};
+
+promptUser()
+  .then(promptQues)
+  .then(promptProject)
+  .then(employeeData => {
+    const pageHTML = generatePage(employeeData);
+
+    fs.writeFile('./index.html', pageHTML, err => {
+      if (err) throw new Error(err);
+
+      console.log('Page created! Check out index.html in this directory to see it!');
     });
-}
-init();
+});
