@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
 
 const Engineer = require('./lib/Engineer');
-const Manager = require('./lib/Engineer');
+const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 
 const newMemberData = [];

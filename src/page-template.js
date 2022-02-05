@@ -12,7 +12,7 @@ const generatePage = (team) => {
               <ul class="list-group">
                   <li class="list-group-item">ID: ${manager.getId()}</li>
                   <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
-                  <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
+                  <li class="list-group-item">Office number: ${manager.getOffice()}</li>
               </ul>
           </div>
       </div>
@@ -63,6 +63,7 @@ const generatePage = (team) => {
       team
         .filter((employee) => employee.getRole() === "Manager")
         .map((manager) => generateManager(manager))
+        .join("")
     );
     html.push(
       team
