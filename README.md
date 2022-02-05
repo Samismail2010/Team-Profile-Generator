@@ -45,6 +45,8 @@ npm run test
 find me on Github: [samismail2010](https://github.com/samismail2010)
 Email me with any questions: [samismail2010@gmail.com](mailto:samismail2010@gmail.com)
 
+## Screenshot
+<img width="1388" alt="Screen Shot 2022-02-04 at 8 27 53 PM" src="https://user-images.githubusercontent.com/88996409/152625505-c551584d-7c4c-4143-a57a-6a40700d7f0e.png">
+
 ## Walkthrough Video
 https://watch.screencastify.com/v/yXs2jNFMvi8Y9oXpipnH
-
