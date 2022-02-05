@@ -17,17 +17,17 @@ This project uses node to prompt a series of questions. Based on the answers, th
 * [Questions](#questions)
 
 ## Installation
-Jest 
-Inquirer 
-Node
+* Jest 
+* Inquirer 
+* Node
 
 ## Language
-JavaScript
-HTML
-CSS
-ES6
-Bootstrap
-Node
+* JavaScript
+* HTML
+* CSS
+* ES6
+* Bootstrap
+* Node
 
 ## Usage
 Purpose of this project is to use a series of questions to build a team to work on a project.
