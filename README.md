@@ -3,7 +3,7 @@
  
 
 ## Description
-This project uses node to prompt a series of questions. Based on the answers, the user will decide what role is needed for the team. After selecting a role, another prompt will appear asking a special question for whatever position was selected. Users then will have the option to add another team member or complete the team as is.
+This project uses node to prompt a series of questions. Based on the answers, the user will decide what role is needed for the team. After selecting a role, another prompt will appear asking a special question for whatever position was selected. Users then will have the option to add another team member or complete the team as is. After completion an HTML file will be generated and the webpage will display the team's group, a screenshot example is down below.
 
 ## Table of Contents
 
